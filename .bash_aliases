@@ -69,10 +69,14 @@ alias dentro='firefox -app /home/erez/dev/dentro/application.ini &'
 
 function gpull {
 	if [ ! -z "$1" ]; then
-		for $i in $(ls $1); do
-			cd $1'/'$i
-			pull_master_from $branch
-		done
+	    for i in $(ls $1); do
+                if [ -d $1'/'$i ]; then
+                    here=$(pwd)
+	            cd $1'/'$i
+		    pull_master_from $branch
+                    cd $here
+                fi
+            done
 	else
 
 		pull_master_from $branch
@@ -83,8 +87,12 @@ function gpull {
 function pull_master_from {
 	branch=$(__git_ps1 "%s")
 	if [ ! -z "$branch" ]; then
+            if [ $branch != "master" ]; then
 		git checkout master && git pull
 		git checkout $branch
+            else
+                git pull
+            fi
 	fi
 }
 
@@ -95,3 +103,5 @@ source $HOME/dev/dotfiles/lib/perl.sh
 # packages maintenance commands
 
 source $HOME/dev/dotfiles/lib/package.sh
+
+alias upall='upgrade; cpanupdate; gpull ~/dev/; upplan9'
