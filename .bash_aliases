@@ -96,7 +96,7 @@ function pull_master_from {
 	fi
 }
 
-# perl and cpanm commands
+#perl and cpanm commands
 
 source $HOME/dev/dotfiles/lib/perl.sh
 
