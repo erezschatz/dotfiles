@@ -1,0 +1,1 @@
+/home/erez/.bash_profile
