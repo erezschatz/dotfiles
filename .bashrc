@@ -4,6 +4,12 @@ case $- in
       *) return;;
 esac
 
+xrandr --newmode "1280x1024_60.00"  109.00  1280 1368 1496 1712  1024 1027 1034 1063 -hsync +vsync
+xrandr --addmode VGA1 1280x1024_60.00
+xrandr --output VGA1 --mode 1280x1024_60.00 --right-of LVDS1
+
+xmodmap $HOME/.xmodmap
+
 # don't put duplicate lines or lines starting with space in the history.
 HISTCONTROL=ignoreboth
 
@@ -86,7 +92,5 @@ fi
 
 BROWSER=firefox
 EDITOR=nano
-
-alias upall='upgrade; cpanupdate; got update; upplan9'
 
 export EDITOR BROWSER font GS_FONTPATH PLAN9 PATH
