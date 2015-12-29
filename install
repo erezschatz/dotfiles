@@ -20,4 +20,4 @@ source $HOME/.bashrc
 
 curl -L http://cpanmin.us | perl - App::cpanminus
 
-cpanm App::cpanoutdated App::GitGot App::pmuninstall App::ack Pod::Cpandoc Module::Version
+cpanm App::cpanoutdated App::pmuninstall App::ack Pod::Cpandoc Module::Version
