@@ -1,0 +1,46 @@
+[user]
+	email = erez.schatz@yahoo.com
+	name = Erez Schatz
+[push]
+	default = simple
+
+[alias]
+    pull = pull --rebase
+    push = "git pull --rebase && git push"
+    merge = merge --ff-only
+    st = status
+    c  = commit -a -m
+    ci = commit
+    br = branch
+    co = checkout
+    df = diff --color
+    dc = diff --color --cached
+    lp = log -p --color
+    who = shortlog -s --
+    lg = log --graph --pretty=format:'%Cred%h%Creset — %s %Cgreen(%cr)%Creset %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative --color
+    undo = reset --hard
+    lol = log --graph --decorate --pretty=oneline --abbrev-commit
+    lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+    ls = ls-files
+    git = "!f() { git \"$@\"; }; f"
+    snapshot = !git stash save "snapshot: $(date)" && git stash apply "stash@{0}"
+
+# coloring!
+[color]
+    ui = true
+[color "branch"]
+    current = yellow reverse
+    local = yellow
+    remote = green
+[color "diff"]
+    meta = yellow bold
+    frag = magenta bold
+    old = red bold
+    new = green bold
+[color "status"]
+    added = yellow
+    changed = green
+    untracked = cyan
+
+[diff]
+    algorithm = patience
