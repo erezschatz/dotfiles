@@ -10,7 +10,7 @@ function pkginstall {
                 return 127
             fi
         elif [[ $name =~ ARCH ]]; then
-	    if sudo pacman -Syu $arg; then
+	    if sudo yaourt -Syua $arg; then
                 return 0
             else
                 return 127
@@ -27,18 +27,10 @@ function upgrade {
     if [[ $name =~ Ubuntu || $name =~ Debian ]]; then
 	sudo apt-get update && sudo apt-get dist-upgrade
     elif [[ $name =~ ARCH ]]; then
-	sudo pacman -Syu
+	yaourt -Syua
     else
 	echo "Unknown operating system uname $name"
     fi
-}
-
-function upplan9 {
-    current=$(pwd)
-    cd $PLAN9
-    git pull -u
-    cd $current
-    echo
 }
 
 function delete {
