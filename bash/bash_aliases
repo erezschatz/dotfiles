@@ -65,19 +65,18 @@ alias dentro='firefox -app /home/erez/dev/dentro/application.ini &'
 # git
 
 function gpull {
-	if [ ! -z "$1" ]; then
-	    for i in $(ls $1); do
-                if [ -d $1'/'$i ]; then
-                    here=$(pwd)
-	            cd $1'/'$i
-		    pull_master_from $branch
-                    cd $here
-                fi
-            done
-	else
-
+    if [ ! -z "$1" ]; then
+	for i in $(ls $1); do
+            if [ -d $1'/'$i ]; then
+                here=$(pwd)
+	        cd $1'/'$i
 		pull_master_from $branch
-	fi
+                cd $here
+            fi
+        done
+    else
+	pull_master_from $branch
+    fi
 
 }
 
@@ -93,8 +92,16 @@ function pull_master_from {
 	fi
 }
 
+alias rmtilde='find -name *~ -exec rm {} \;'
+
 function hisgrep {
 	history | grep "$1";
+}
+
+alias docker='sudo docker'
+
+function dockerip {
+    sudo docker inspect --format '{{ .NetworkSettings.IPAddress }}' $@
 }
 
 #perl and cpanm commands

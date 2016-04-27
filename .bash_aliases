@@ -1,1 +1,0 @@
-/home/erez/.bash_aliases
